@@ -15,6 +15,22 @@ public class Cart {
         System.out.println("The disc has been added.");
     }
 
+
+    // Add a list of DVDs using an array
+    public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
+        for (DigitalVideoDisc disc : dvdList){
+            itemsOrdered.add(disc); 
+            System.out.println("The disc \""+disc.getTitle() + "\" has been added");
+        }
+    }
+    // Add two DVDs at once
+    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2){
+        itemsOrdered.add(dvd1);
+        System.out.println("The disc \"" + dvd1.getTitle() + "\" has been added");
+        itemsOrdered.add(dvd2);
+        System.out.println("The disc \"" + dvd2.getTitle() + "\" has been added");
+    }
+
     // Remove a DVD from the cart
     public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
         if (itemsOrdered.remove(disc)) {

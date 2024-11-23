@@ -17,6 +17,11 @@ public class Aims {
         // Thêm các DVD vào giỏ hàng
         cart.addDigitalVideoDisc(dvd1);
         
+        DigitalVideoDisc[] dvdList = {dvd2, dvd3};
+        cart.addDigitalVideoDisc(dvdList);
+
+        cart.addDigitalVideoDisc(dvd1, dvd3);
+
         // Hiển thị thông tin tất cả các DVD trong giỏ
         System.out.println("\nCart contents:");
         cart.displayCart();
