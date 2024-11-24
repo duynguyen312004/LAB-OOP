@@ -7,6 +7,9 @@ public class DigitalVideoDisc {
     private String director;
     private int length;
     private double cost;
+    private int id;
+
+    private static int nbDigitalVideoDiscs = 0;
 
     // Constructor
     public DigitalVideoDisc(String title, String category, String director, int length, double cost) {
@@ -15,10 +18,16 @@ public class DigitalVideoDisc {
         this.director = director;
         this.length = length;
         this.cost = cost;
+
+        nbDigitalVideoDiscs++;
+        this.id = nbDigitalVideoDiscs;
     }
 
     public DigitalVideoDisc(String title) {
         this.title = title;
+
+        nbDigitalVideoDiscs++;
+        this.id = nbDigitalVideoDiscs;
     }
 
     // Setters
@@ -47,9 +56,13 @@ public class DigitalVideoDisc {
         return cost;
     }
 
+    public int getId() {
+        return id;
+    }
+
     // Display information of the DVD
     public void displayInfo() {
-        System.out.println("Title: " + title + ", Category: " + category + ", Director: " + director +
+        System.out.println("ID:" + id + ", Title: " + title + ", Category: " + category + ", Director: " + director +
                 ", Length: " + length + " minutes, Cost: $" + cost);
     }
 
