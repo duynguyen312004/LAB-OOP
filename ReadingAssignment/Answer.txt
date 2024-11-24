@@ -1,7 +1,20 @@
-Câu hỏi 1: Nếu bạn tạo một phương thức constructor để xây dựng DVD theo tiêu đề (title), 
-sau đó tạo một constructor để xây dựng DVD theo thể loại (category), Java có cho phép làm điều này không?
-Trả lời:
-    Java cho phép tạo nhiều constructor trong cùng một lớp với các tham số khác nhau thông qua tính năng method overloading (nạp chồng phương thức). 
-    Điều này có nghĩa là bạn có thể tạo các constructor với các danh sách tham số khác nhau trong cùng một lớp mà không gây ra lỗi. 
-    Trong trường hợp này, bạn có thể tạo một constructor chỉ với title, một constructor khác với category, hoặc một constructor có cả title và category. 
-    Java sẽ chọn constructor phù hợp dựa trên số lượng và kiểu dữ liệu của các tham số khi bạn khởi tạo đối tượng.
+Câu hỏi 1: Java là ngôn ngữ lập trình truyền tham trị (Pass by Value) hay truyền tham chiếu (Pass By Parameter)?
+Câu hỏi 1.1: Tại sao sau khi gọi swap(jungleDVD, cinderellaDVD), tiêu đề của hai đối tượng vẫn không thay đổi?
+    Trả lời: Khi gọi phương thức swap, giá trị của tham chiếu (reference) đến các đối tượng jungleDVD và cinderellaDVD được sao chép. 
+        Trong phương thức:
+            o1 và o2 là các bản sao của tham chiếu gốc (jungleDVD và cinderellaDVD).
+            Việc gán o1 = o2 chỉ thay đổi bản sao, không ảnh hưởng đến tham chiếu gốc bên ngoài.
+            Do đó, các đối tượng jungleDVD và cinderellaDVD bên ngoài phương thức không bị hoán đổi.
+
+
+Câu hỏi 1.2: Tại sao sau khi gọi changeTitle(jungleDVD, cinderellaDVD.getTitle()), tiêu đề của jungleDVD lại thay đổi?
+    Trả lời: Khi jungleDVD được truyền vào phương thức changeTitle, giá trị của tham chiếu jungleDVD được sao chép.
+            Tuy nhiên, trong Java, các đối tượng được truy cập thông qua tham chiếu, vì vậy khi gọi dvd.setTitle(title) trong phương thức:
+                Phương thức này thay đổi trực tiếp thuộc tính title của đối tượng mà dvd đang tham chiếu.
+                Việc tạo đối tượng mới (new DigitalVideoDisc) trong phương thức không ảnh hưởng đến jungleDVD bên ngoài, vì tham chiếu dvd chỉ là bản sao.
+
+                
+=> Kết luận: Java luôn là ngôn ngữ truyền tham trị (Pass by Value)
+ + Với các đối tượng: Java truyền giá trị của tham chiếu (copy of reference), không phải tham chiếu trực tiếp.
+                      Điều này có nghĩa là bạn có thể thay đổi nội dung của đối tượng được tham chiếu (như thuộc tính title), nhưng không thể thay đổi chính tham chiếu gốc (không thể hoán đổi jungleDVD và cinderellaDVD).
+ + Với kiểu nguyên thủy: Java truyền giá trị gốc của biến, và bất kỳ thay đổi nào trong phương thức không ảnh hưởng đến giá trị bên ngoài.

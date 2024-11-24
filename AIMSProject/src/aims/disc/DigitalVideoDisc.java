@@ -17,6 +17,15 @@ public class DigitalVideoDisc {
         this.cost = cost;
     }
 
+    public DigitalVideoDisc(String title) {
+        this.title = title;
+    }
+
+    // Setters
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     // Getters
     public String getTitle() {
         return title;
