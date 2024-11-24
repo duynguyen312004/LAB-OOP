@@ -74,4 +74,12 @@ public class DigitalVideoDisc {
             System.out.println("Cannot play demo: \"" + title + "\" has no content.");
         }
     }
+
+    public String toString() {
+        return "DVD - " + title + " - " + category + " - " + director + " - " + length + " mins: $" + cost;
+    }
+
+    public boolean isMatch(String title) {
+        return this.title.toLowerCase().contains(title.toLowerCase());
+    }
 }

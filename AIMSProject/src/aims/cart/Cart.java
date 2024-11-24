@@ -1,6 +1,5 @@
 package aims.cart;
 
-
 import aims.disc.DigitalVideoDisc;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -11,20 +10,20 @@ public class Cart {
 
     // Add a DVD to the cart
     public void addDigitalVideoDisc(DigitalVideoDisc disc) {
-        itemsOrdered.add(disc);	
+        itemsOrdered.add(disc);
         System.out.println("The disc has been added.");
     }
 
-
     // Add a list of DVDs using an array
     public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
-        for (DigitalVideoDisc disc : dvdList){
-            itemsOrdered.add(disc); 
-            System.out.println("The disc \""+disc.getTitle() + "\" has been added");
+        for (DigitalVideoDisc disc : dvdList) {
+            itemsOrdered.add(disc);
+            System.out.println("The disc \"" + disc.getTitle() + "\" has been added");
         }
     }
+
     // Add two DVDs at once
-    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2){
+    public void addDigitalVideoDisc(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
         itemsOrdered.add(dvd1);
         System.out.println("The disc \"" + dvd1.getTitle() + "\" has been added");
         itemsOrdered.add(dvd2);
@@ -59,26 +58,30 @@ public class Cart {
     // Sort DVDs in the cart by title alphabetically
     public void sortByTitle() {
         itemsOrdered.sort(Comparator.comparing(DigitalVideoDisc::getTitle)
-                                    .thenComparing(Comparator.comparing(DigitalVideoDisc::getCost).reversed()));
+                .thenComparing(Comparator.comparing(DigitalVideoDisc::getCost).reversed()));
         System.out.println("Cart sorted by title.");
     }
 
     // Sort DVDs in the cart by cost in descending order
     public void sortByCost() {
         itemsOrdered.sort(Comparator.comparing(DigitalVideoDisc::getCost).reversed()
-                                    .thenComparing(DigitalVideoDisc::getTitle));
+                .thenComparing(DigitalVideoDisc::getTitle));
         System.out.println("Cart sorted by cost.");
     }
 
     // Search DVDs by title
-    public ArrayList<DigitalVideoDisc> searchByTitle(String title) {
-        ArrayList<DigitalVideoDisc> result = new ArrayList<>();
+    public void searchByTitle(String title) {
+        boolean found = false;
+        System.out.println("Search results for title: " + title);
         for (DigitalVideoDisc disc : itemsOrdered) {
-            if (disc.getTitle().toLowerCase().contains(title.toLowerCase())) {
-                result.add(disc);
+            if (disc.isMatch(title)) {
+                System.out.println(disc.toString());
+                found = true;
             }
         }
-        return result;
+        if (!found) {
+            System.out.println("No DVD found with title containing: " + title);
+        }
     }
 
     // Search DVDs by category
@@ -114,4 +117,34 @@ public class Cart {
         System.out.println("You get \"" + freeDisc.getTitle() + "\" for free!");
         return freeDisc;
     }
+
+    public void printCart() {
+        System.out.println("***********************CART***********************");
+        System.out.println("Ordered Items:");
+
+        double totalCost = 0;
+        for (int i = 0; i < itemsOrdered.size(); i++) {
+            DigitalVideoDisc disc = itemsOrdered.get(i);
+            System.out.println((i + 1) + ". " + disc.toString());
+            totalCost += disc.getCost();
+        }
+
+        System.out.println("Total cost: $" + totalCost);
+        System.out.println("***************************************************");
+    }
+
+    public void searchById(int id) {
+        boolean found = false;
+        for (DigitalVideoDisc disc : itemsOrdered) {
+            if (disc.getId() == id) {
+                System.out.println("Found: " + disc.toString());
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("No DVD with ID: " + id);
+        }
+    }
+
 }

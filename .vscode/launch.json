@@ -8,7 +8,7 @@
             "type": "java",
             "name": "Debug Aims",
             "request": "launch",
-            "mainClass": "aims.Aims"
+            "mainClass": "aims.CartTest"
         },
         {
             "type": "java",
@@ -16,6 +16,12 @@
             "request": "launch",
             "mainClass": "aims.TestPassingParameter",
             "projectName": "OOP_f03129b6"
+        },
+        {
+            "type": "java",
+            "name": "Cart Test",
+            "request": "launch",
+            "mainClass": "aims.CartTest",
         }
     ]
 }
