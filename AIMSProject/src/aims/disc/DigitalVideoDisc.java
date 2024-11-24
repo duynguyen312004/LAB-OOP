@@ -1,6 +1,5 @@
 
 package aims.disc;
-import aims.cart.Cart;
 
 public class DigitalVideoDisc {
     private String title;
@@ -42,7 +41,7 @@ public class DigitalVideoDisc {
     // Display information of the DVD
     public void displayInfo() {
         System.out.println("Title: " + title + ", Category: " + category + ", Director: " + director +
-                           ", Length: " + length + " minutes, Cost: $" + cost);
+                ", Length: " + length + " minutes, Cost: $" + cost);
     }
 
     // Play demo of the DVD
