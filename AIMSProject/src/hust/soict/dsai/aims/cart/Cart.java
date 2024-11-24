@@ -1,9 +1,10 @@
-package aims.cart;
+package hust.soict.dsai.aims.cart;
 
-import aims.disc.DigitalVideoDisc;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
+
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 
 public class Cart {
     private ArrayList<DigitalVideoDisc> itemsOrdered = new ArrayList<>();

@@ -8,20 +8,20 @@
             "type": "java",
             "name": "Debug Aims",
             "request": "launch",
-            "mainClass": "aims.CartTest"
+            "mainClass": "hust.soict.dsai.test.store.StoreTest"
         },
         {
             "type": "java",
             "name": "TestPassingParameter",
             "request": "launch",
-            "mainClass": "aims.TestPassingParameter",
+            "mainClass": "hust.soict.dsai.test.disc.TestPassingParameter",
             "projectName": "OOP_f03129b6"
         },
         {
             "type": "java",
             "name": "Cart Test",
             "request": "launch",
-            "mainClass": "aims.CartTest",
+            "mainClass": "ust.soict.dsai.test.cart.CartTest",
         }
     ]
 }

@@ -1,3 +1,4 @@
+package hust.soict.dsai.test.disc;
 // package aims;
 
 // import aims.disc.DigitalVideoDisc;
