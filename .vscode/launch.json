@@ -43,6 +43,13 @@
             "name": "Cart Test",
             "request": "launch",
             "mainClass": "ust.soict.dsai.test.cart.CartTest"
+        },
+        {
+            "type": "java",
+            "name": "Debug TestPassingParameter",
+            "request": "launch",
+            "mainClass": "hust.soict.dsai.test.disc.TestPassingParameter",
+            "projectName": "AIMSProject"
         }
     ]
 }
