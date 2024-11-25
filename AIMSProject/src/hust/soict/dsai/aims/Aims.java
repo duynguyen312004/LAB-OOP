@@ -1,6 +1,6 @@
 package hust.soict.dsai.aims;
 // package aims;
-
+// Add a feature for demonstration
 // // import aims.cart.Cart; // Import lớp Cart
 // import aims.disc.DigitalVideoDisc; // Import lớp DigitalVideoDisc
 
