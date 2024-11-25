@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "NoGarbage",
+            "request": "launch",
+            "mainClass": "OtherProjects.hust.soict.dsai.garbage.NoGarbage",
+            "projectName": "OOP_f03129b6"
+        },
+        {
+            "type": "java",
+            "name": "GarbageCreator",
+            "request": "launch",
+            "mainClass": "OtherProjects.hust.soict.dsai.garbage.GarbageCreator",
+            "projectName": "OOP_f03129b6"
+        },
+        {
+            "type": "java",
+            "name": "ConcatenationInLoops",
+            "request": "launch",
+            "mainClass": "OtherProjects.hust.soict.dsai.garbage.ConcatenationInLoops",
+            "projectName": "OOP_f03129b6"
+        },
+        {
+            "type": "java",
             "name": "Debug Aims",
             "request": "launch",
             "mainClass": "hust.soict.dsai.test.store.StoreTest"
@@ -21,7 +42,7 @@
             "type": "java",
             "name": "Cart Test",
             "request": "launch",
-            "mainClass": "ust.soict.dsai.test.cart.CartTest",
+            "mainClass": "ust.soict.dsai.test.cart.CartTest"
         }
     ]
 }
