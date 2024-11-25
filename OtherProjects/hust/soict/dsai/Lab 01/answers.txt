@@ -1,0 +1,50 @@
+Câu hỏi 1: What happens if users choose “Cancel”?
+
+Khi người dùng chọn "Cancel" trong JOptionPane.showConfirmDialog, giá trị trả về sẽ là JOptionPane.CANCEL_OPTION.
+Trong đoạn mã hiện tại, việc xử lý "Cancel" không được triển khai, vì chỉ có kiểm tra JOptionPane.YES_OPTION và JOptionPane.NO_OPTION. Do đó, nếu người dùng chọn "Cancel," không có thông báo hoặc hành động cụ thể nào xảy ra, chương trình sẽ vẫn kết thúc do lệnh System.exit(0); sau đó.
+
+Để xử lý tình huống "Cancel," ta có thể thêm điều kiện kiểm tra như sau:
+
+if (option == JOptionPane.YES_OPTION) {
+    JOptionPane.showMessageDialog(null, "You've chosen: Yes");
+} else if (option == JOptionPane.NO_OPTION) {
+    JOptionPane.showMessageDialog(null, "You've chosen: No");
+} else if (option == JOptionPane.CANCEL_OPTION) {
+    JOptionPane.showMessageDialog(null, "You've chosen: Cancel");
+}
+
+Câu hỏi 2: How to customize the options to users, e.g., only two options: “Yes” and “No,” OR “I do” and “I don’t”?
+
+Để tùy chỉnh các tùy chọn, ta có thể sử dụng phương thức showOptionDialog của JOptionPane và truyền vào một mảng các lựa chọn (String[] options).
+
+Đoạn mã đầy đủ nếu ta muốn tùy chỉnh như ví dụ trên:
+
+import javax.swing.JOptionPane;
+public class ChoosingOption {
+	public static void main(String[] args) {
+		String[] options = {"Yes", "No", "Cancel"};
+		int option = JOptionPane.showOptionDialog(null, 
+				"Do you want to change to the first class ticket?",
+				"Choose an option",
+				JOptionPane.YES_NO_CANCEL_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				options, // tùy chọn 
+				options[0] // tùy chọn mặc định
+				);
+		if(option == JOptionPane.YES_OPTION) {
+			JOptionPane.showMessageDialog(null, "You've chosen: YES");
+		}
+		else if(option == JOptionPane.NO_OPTION) {
+			JOptionPane.showConfirmDialog(null, "You've chosen: NO");
+		}
+		else if(option == JOptionPane.CANCEL_OPTION){
+			JOptionPane.showConfirmDialog(null, "You've chosen: CANCEL");
+		}
+		else {
+			JOptionPane.showConfirmDialog(null, "No option was selected");
+		}
+		System.exit(0);
+	}
+}
+

@@ -1,0 +1,48 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "NoGarbage",
+            "request": "launch",
+            "mainClass": "OtherProjects.hust.soict.dsai.garbage.NoGarbage",
+            "projectName": "OOP_f03129b6"
+        },
+        {
+            "type": "java",
+            "name": "GarbageCreator",
+            "request": "launch",
+            "mainClass": "OtherProjects.hust.soict.dsai.garbage.GarbageCreator",
+            "projectName": "OOP_f03129b6"
+        },
+        {
+            "type": "java",
+            "name": "ConcatenationInLoops",
+            "request": "launch",
+            "mainClass": "OtherProjects.hust.soict.dsai.garbage.ConcatenationInLoops",
+            "projectName": "OOP_f03129b6"
+        },
+        {
+            "type": "java",
+            "name": "Debug Aims",
+            "request": "launch",
+            "mainClass": "hust.soict.dsai.test.store.StoreTest"
+        },
+        {
+            "type": "java",
+            "name": "TestPassingParameter",
+            "request": "launch",
+            "mainClass": "hust.soict.dsai.test.disc.TestPassingParameter",
+            "projectName": "OOP_f03129b6"
+        },
+        {
+            "type": "java",
+            "name": "Cart Test",
+            "request": "launch",
+            "mainClass": "ust.soict.dsai.test.cart.CartTest"
+        }
+    ]
+}
