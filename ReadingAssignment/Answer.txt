@@ -1,20 +1,70 @@
-Câu hỏi 1: Java là ngôn ngữ lập trình truyền tham trị (Pass by Value) hay truyền tham chiếu (Pass By Parameter)?
-Câu hỏi 1.1: Tại sao sau khi gọi swap(jungleDVD, cinderellaDVD), tiêu đề của hai đối tượng vẫn không thay đổi?
-    Trả lời: Khi gọi phương thức swap, giá trị của tham chiếu (reference) đến các đối tượng jungleDVD và cinderellaDVD được sao chép. 
-        Trong phương thức:
-            o1 và o2 là các bản sao của tham chiếu gốc (jungleDVD và cinderellaDVD).
-            Việc gán o1 = o2 chỉ thay đổi bản sao, không ảnh hưởng đến tham chiếu gốc bên ngoài.
-            Do đó, các đối tượng jungleDVD và cinderellaDVD bên ngoài phương thức không bị hoán đổi.
+1. Lớp nào nên triển khai interface Comparable?
+Bất kỳ lớp nào cần được sắp xếp dựa trên các thuộc tính của nó nên triển khai interface Comparable. Ví dụ, nếu bạn có một lớp gọi là Item đại diện cho các mục trong giỏ hàng, nó nên triển khai Comparable<Item>.
+
+public class Item implements Comparable<Item> {
+    private String title;
+    private double cost;
+
+    // Constructor, getters, và setters bị bỏ qua để tiết kiệm không gian
+
+    @Override
+    public int compareTo(Item other) {
+        // Logic so sánh sẽ được thực hiện ở đây
+    }
+}
+
+2. Trong những lớp đó, bạn nên triển khai phương thức compareTo() như thế nào để phản ánh thứ tự mà chúng ta muốn?
+Phương thức compareTo() phải trả về một số nguyên cho biết thứ tự của đối tượng hiện tại so với một đối tượng khác:
+- Một số nguyên âm nếu đối tượng này nhỏ hơn đối tượng đã chỉ định.
+- Zero nếu đối tượng này bằng với đối tượng đã chỉ định.
+- Một số nguyên dương nếu đối tượng này lớn hơn đối tượng đã chỉ định.
+
+Nếu bạn muốn sắp xếp các mục trước tiên theo tiêu đề và sau đó theo chi phí, việc triển khai của bạn có thể như sau:
+
+@Override
+public int compareTo(Item other) {
+    int titleComparison = this.title.compareTo(other.title);
+    if (titleComparison != 0) {
+        return titleComparison; // Sắp xếp theo tiêu đề
+    }
+    return Double.compare(this.cost, other.cost); // Sắp xếp theo chi phí
+}
+
+3. Chúng ta có thể có hai quy tắc sắp xếp của mục (theo tiêu đề rồi đến chi phí và theo chi phí rồi đến tiêu đề) nếu chúng ta sử dụng cách tiếp cận interface Comparable không?
+
+Sử dụng interface Comparable, bạn chỉ có thể định nghĩa một thứ tự tự nhiên cho mỗi lớp. Tuy nhiên, nếu bạn cần nhiều quy tắc sắp xếp (như sắp xếp theo tiêu đề rồi đến chi phí và theo chi phí rồi đến tiêu đề), bạn thường sẽ sử dụng interface Comparator thay thế.
+
+Ví dụ:
+
+Comparator<Item> byCostThenTitle = Comparator.comparingDouble(Item::getCost)
+                                             .thenComparing(Item::getTitle);
+
+4. Giả sử các DVD có quy tắc sắp xếp khác với các loại phương tiện khác, đó là theo tiêu đề, sau đó là độ dài giảm dần, rồi đến chi phí. Bạn sẽ sửa đổi mã của mình như thế nào để cho phép điều này?
 
 
-Câu hỏi 1.2: Tại sao sau khi gọi changeTitle(jungleDVD, cinderellaDVD.getTitle()), tiêu đề của jungleDVD lại thay đổi?
-    Trả lời: Khi jungleDVD được truyền vào phương thức changeTitle, giá trị của tham chiếu jungleDVD được sao chép.
-            Tuy nhiên, trong Java, các đối tượng được truy cập thông qua tham chiếu, vì vậy khi gọi dvd.setTitle(title) trong phương thức:
-                Phương thức này thay đổi trực tiếp thuộc tính title của đối tượng mà dvd đang tham chiếu.
-                Việc tạo đối tượng mới (new DigitalVideoDisc) trong phương thức không ảnh hưởng đến jungleDVD bên ngoài, vì tham chiếu dvd chỉ là bản sao.
+Nếu các DVD có quy tắc sắp xếp cụ thể (theo tiêu đề, sau đó là độ dài giảm dần, rồi đến chi phí), bạn có thể đạt được điều này bằng cách tạo một lớp riêng cho DVD mà triển khai Comparable:
 
-                
-=> Kết luận: Java luôn là ngôn ngữ truyền tham trị (Pass by Value)
- + Với các đối tượng: Java truyền giá trị của tham chiếu (copy of reference), không phải tham chiếu trực tiếp.
-                      Điều này có nghĩa là bạn có thể thay đổi nội dung của đối tượng được tham chiếu (như thuộc tính title), nhưng không thể thay đổi chính tham chiếu gốc (không thể hoán đổi jungleDVD và cinderellaDVD).
- + Với kiểu nguyên thủy: Java truyền giá trị gốc của biến, và bất kỳ thay đổi nào trong phương thức không ảnh hưởng đến giá trị bên ngoài.
+public class DVD implements Comparable<DVD> {
+    private String title;
+    private double length; // Giả sử độ dài tính bằng phút
+    private float cost;
+
+    @Override
+    public int compareTo(Media other) {
+        if (other instanceof DigitalVideoDisc) {
+            DigitalVideoDisc dvd = (DigitalVideoDisc) other;
+            int titleComparision = this.getTitle().compareToIgnoreCase(dvd.getTitle());
+            if (titleComparision != 0) {
+                return titleComparision;
+            }
+            // so sánh độ dài
+            int lengthComparision = Integer.compare(dvd.getLength(), this.getLength());
+            if (lengthComparision != 0)
+                return lengthComparision;
+            // so sánh giá
+            return Float.compare(dvd.getCost(), this.getCost());
+        }
+        return 0;
+    }
+
+}
