@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch StoreScreen",
+            "request": "launch",
+            "mainClass": "hust.soict.dsai.aims.screen.StoreScreen",
+            "projectName": "AIMSProject"
+        },
+        {
+            "type": "java",
             "name": "Aims",
             "request": "launch",
             "mainClass": "hust.soict.dsai.aims.Aims",
