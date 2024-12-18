@@ -1,16 +1,16 @@
 package hust.soict.dsai.aims.media;
 
+import hust.soict.dsai.aims.exception.PlayerException;
+
 public class Track implements Playable {
     private String title;
     private int length;
 
-    // Constructor
     public Track(String title, int length) {
         this.title = title;
         this.length = length;
     }
 
-    // Getter và Setter
     public String getTitle() {
         return title;
     }
@@ -20,26 +20,13 @@ public class Track implements Playable {
     }
 
     @Override
-    public void play() {
-        // Phát bài hát
-        System.out.println("Playing Track: " + title);
-        System.out.println("Track length: " + length + " mins");
-    }
-
-    // ToString
-    @Override
-    public String toString() {
-        return "Track: " + title + " - Length: " + length + " mins";
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Track) {
-            Track other = (Track) obj;
-            return this.title.equalsIgnoreCase(other.getTitle()) && this.length == other.getLength(); // So sánh tiêu đề
-                                                                                                      // và độ dài
+    public void play() throws PlayerException {
+        if (this.length > 0) {
+            System.out.println("Playing Track: " + this.title);
+            System.out.println("Track length: " + this.length + " mins");
+        } else {
+            System.err.println("ERROR: Track length is non-positive!");
+            throw new PlayerException("Track length is non-positive!");
         }
-        return false;
     }
-
 }
